@@ -1,0 +1,28 @@
+{
+	"name": "country-lookup",
+	"version": "1.0.0",
+	"scripts": {
+		"build": "npm run css && npm run ts",
+		"build:watch": "npm run build && npm run watch",
+		"css": "npm run css:minify && npm run css:autoprefix",
+		"css:minify": "node-sass --include-path src demo/style.scss --output-style compressed --output src demo/style.css",
+		"css:autoprefix": "postcss --use autoprefixer --replace compressed demo/style.css",
+		"ts": "tsc -p ./",
+		"vendor": "copyfiles -f node_modules/common-js/common.min.js vendor/common-js",
+		"watch": "onchange \"{demo,src}/**/*.{html,scss,ts}\" -- npm run watch:build",
+		"watch:build": "npm run css && npm run ts"
+	},
+	"devDependencies": {
+		"autoprefixer": "9.6.0",
+		"copyfiles": "2.1.0",
+		"html-validator-cli": "6.0.1",
+		"node-sass": "4.12.0",
+		"onchange": "6.0.0",
+		"postcss-cli": "6.1.2",
+		"reset-css": "4.0.1",
+		"typescript": "3.5.x",
+		"uglify-es": "3.3.9"
+	},
+	"dependencies": {
+	}
+}
