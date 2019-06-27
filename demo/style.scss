@@ -1,0 +1,171 @@
+@import '../node_modules/reset-css/sass/reset';
+
+// Base page layout for demo
+html {
+	font-size: 16px;
+	
+	&.no-js {
+		&::before { content: 'This library only works with Javascript enabled. Please enable Javascript in your browser and refresh the page'; }
+		* { display: none; }
+	}
+}
+
+
+section > * {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 12px;
+}
+
+section.country-lookup {
+	$transition-time: 0.6s;
+	
+	form {
+		$border-radius: 8px;
+		
+		padding-top: 30px;
+		padding-bottom: 30px;
+		border-bottom: 1px solid hsl(0, 0%, 79%);
+		box-shadow:  0 2px 3px transparentize(hsl(0, 0%, 0%), 0.9);
+		
+		@media (min-width: 425px) {
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		label { display: none; }
+		
+		select,
+		input {
+			display: block;
+			box-sizing: border-box;
+			margin-bottom: 12px;
+			width: 100%;
+			padding: 12px 8px;
+			border: 1px solid hsl(0, 0%, 79%);
+			border-radius: $border-radius;
+			opacity: 0.8;
+			font-size: 18px;
+			transition: box-shadow $transition-time, border-color $transition-time, opacity $transition-time;
+			
+			&:hover,
+			&:focus {
+				border-color: hsl(307, 75%, 88%);
+				box-shadow: 2px 0 8px transparentize(hsl(0, 0%, 0%), 0.8);
+				opacity: 1;
+			}
+			
+			&:focus { outline: none; }
+			
+			@media (min-width: 425px) { flex: 1 50%; }
+			@media (min-width: 758px) {
+				flex: 0 200px;
+				margin-bottom: 0;
+			}
+		}
+		
+		select {
+			// Reset browser styles
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			&::-ms-expand { display: none; }
+			
+			background: hsl(307, 75%, 98%) url('data:image/svg+xml;charset=US-ASCII,<svg%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"292.4"%20height%3D"292.4"><path%20fill%3D"%23999999"%20d%3D"M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z"%2F><%2Fsvg>') no-repeat right .7em top 50%;
+			background-size: .65em auto;
+			
+			@media (min-width: 425px) {
+				border-radius: $border-radius 0 0 $border-radius;
+			}
+		}
+		
+		input {
+			@media (min-width: 425px) {
+				border-radius: 0 $border-radius $border-radius 0;
+			}
+		}
+		
+		button {
+			margin-top: 24px;
+			width: 100%;
+			padding: 12px 8px;
+			border: none;
+			border-radius: $border-radius;
+			background: hsl(307, 75%, 88%);
+			color: hsl(0, 0%, 100%);
+			font-size: 18px;
+			font-weight: bold;
+			letter-spacing: 1px;
+			text-shadow: 0 0 1px hsl(0, 0%, 12%);
+			transition: box-shadow $transition-time;
+			cursor: pointer;
+			
+			&:hover,
+			&:focus { box-shadow: 1px 2px 8px transparentize(hsl(0, 0%, 0%), 0.8); }
+			
+			@media (min-width: 758px) {
+				flex: 0 130px;
+				margin-top: 0;
+				margin-left: 36px;
+			}
+		}
+	}
+	
+	.countries {
+		margin: 24px 0;
+		
+		button {
+			margin-bottom: 8px;
+			padding: 10px 8px;
+			border-radius: 8px;
+			font-size: 16px;
+			background: hsl(245, 50%, 82%);
+		}
+		
+		ul li {
+			display: flex;
+			align-items: flex-start;
+			margin-bottom: -1px;
+			padding: 16px 8px;
+			border: 1px solid hsl(0, 0%, 79%);
+			
+			img {
+				margin-right: 12px;
+				width: 60px;
+				box-shadow: 0 1px 4px hsl(0, 0%, 82%);
+			}
+			
+			> div {
+				flex: 1 auto;
+				font-family: sans-serif;
+				
+				h3 {
+					margin-bottom: 4px;
+					font-size: 24px;
+				}
+				
+				span {
+					display: inline-block;
+					margin-right: 12px;
+					color: hsl(0, 0%, 40%);
+					font-size: 14px;
+					
+					&::before {
+						content: '';
+						display: inline-block;
+						margin-right: 4px;
+						width: 15px;
+						height: 15px;
+					}
+					
+					&.capital::before { background: url('https://img.icons8.com/ios/50/666666/city-hall.png') no-repeat center/cover; }
+					&.population::before { background: url('https://img.icons8.com/ios/50/666666/global-citizen.png') no-repeat center/cover; }
+					&.language::before { background: url('https://img.icons8.com/ios/50/666666/language.png') no-repeat center/cover; }
+					&.currency::before { background: url('https://img.icons8.com/ios-glyphs/80/666666/money.png') no-repeat center/cover; }
+				}
+			}
+		}
+	}
+}
+
+

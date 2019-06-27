@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="apple-touch-icon" href="icon.png">
+	<!-- Place favicon.ico in the root directory -->
+	
+	<link rel="stylesheet" href="style.css">
+	<script>document.documentElement.classList.remove('no-js')</script>
+</head>
+
+<body>
+	<section class="country-lookup">
+		<form action="">
+			<label for="category">What to search for</label>
+			<select name="category" id="category">
+				<option value="name">Country name</option>
+				<option value="capital">Capital City</option>
+				<option value="lang">Language code</option>
+				<option value="currency">Currency</option>
+			</select>
+		
+			<label for="search">Search value</label>
+			<input type="text" name="search" id="search" placeholder="...">
+			
+			<button type="submit">GO!</button>
+		</form>
+		
+		<div class="countries">
+			<div class="sort">
+				<button class="asc">Sort a-z</button>
+				<button class="desc">Sort z-a</button>
+			</div>
+			<ul></ul>
+		</div>
+	</section>
+	
+	<script src="../src/script.js"></script>
+	
+	<template id="country-template">
+		<li>
+			<img src="" alt="">
+			
+			<div>
+				<h3></h3>
+				
+				<div class="details">
+					<span class="capital"></span>
+					<span class="population"></span>
+					<span class="language"></span>
+					<span class="currency"></span>
+					<a href=""></a>
+				</div>
+			</div>
+		</li>
+	</template>
+</body>
+
+</html>
